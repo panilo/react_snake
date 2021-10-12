@@ -1,5 +1,9 @@
 # React Snake
 
+## Grid example
+
+![Grid example](./grid_example.png)
+
 ## Game rules
 
 - Snake starts at the middle of the grid and its size is 1
