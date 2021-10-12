@@ -19,3 +19,13 @@
 - The snake direction N/S/E/W
 - Snake current position
 - A tile can either contain the food or the snake
+
+## Component hierarchy
+
+Game --> Grid --> Tile
+
+# What to do
+
+1. Create a empty grid and display coordinates
+2. Each tile has to take two properties snake and food, accordingly add a HTML CSS class to display a dark background if is snake or a red one if is food
+3. Move the snake and food management in the game component
