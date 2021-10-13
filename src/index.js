@@ -37,7 +37,7 @@ class Tile extends React.Component {
 
     return (
       <div className={className}>
-        ({this.props.X}, {this.props.Y})
+        ({this.props.X}, {this.props.Y}){isSnake ? "==>" : ""}
       </div>
     );
   }
@@ -46,15 +46,34 @@ class Tile extends React.Component {
 class Grid extends React.Component {
   render() {
     // Create and display a grid
+    // Start with an empty grid we need to fill it with Tile
     const grid = Array(this.props.size[0]).fill(
       Array(this.props.size[1]).fill(null)
     );
-    return (
+
+    //Init a tile filled grid
+    const gridWithTiles = [];
+    // Filling the grid
+    for (let y = 0; y < this.props.size[1]; y++) {
+      // Defining a row in the grid
+      const row = [];
+      for (let x = 0; x < this.props.size[0]; x++) {
+        // Unshift is a function to add something at the end of an array
+        row.unshift(
+          <Tile X={x} Y={y} snake={this.props.snake} food={this.props.food} />
+        );
+      }
+      gridWithTiles.unshift(<div className="grid-row">{row}</div>);
+    }
+
+    const forResult = <div className="grid">{gridWithTiles}</div>;
+
+    const toRender = (
       <div className="grid">
-        {grid.map((gridX, xIndex) => {
+        {grid.map((gridY, yIndex) => {
           return (
             <div className="grid-row">
-              {gridX.map((gridY, yIndex) => {
+              {gridY.map((gridX, xIndex) => {
                 // Each tile will have a X and Y coordinates equal to the indexes
                 // of the arrays we're iterating
                 return (
@@ -71,6 +90,8 @@ class Grid extends React.Component {
         })}
       </div>
     );
+
+    return toRender;
   }
 }
 
@@ -102,7 +123,7 @@ class Game extends React.Component {
   // Lifecycle method of React component
   componentDidMount() {
     let middleCoordinates = this.getMiddleGrid(this.state.gridSize);
-    this.setState({ snake: middleCoordinates });
+    this.setState({ snake: middleCoordinates, food: [5, 3] });
   }
 
   render() {
