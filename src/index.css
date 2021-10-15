@@ -1,5 +1,9 @@
 .grid {
   display: table;
+  border: 12px solid #af7a17;
+  border-radius: 20px;
+  float: left;
+  margin: 20px 20px;
 }
 
 .grid-row {
@@ -8,15 +12,54 @@
 
 .tile {
   display: table-cell;
-  background-color: #999;
-  padding: 10px;
+  background-color: #13a70cc9;
+  padding: 15px;
   border: 1px solid white;
+  background-image: url("./assets/grass.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
 }
 
 .tile.snake {
-  background-color: #333;
+  /* background-color: #333; */
+  background-image: url("./assets/snake-body.png");
 }
 
+.tile.snake.head {
+  /* background-color: #333; */
+  background-image: url("./assets/snake-head.png");
+}
+
+.tile.snake.tail {
+  /* background-color: #333; */
+  background-image: url("./assets/snake-tail.png");
+}
+
+.tile.snake.head.tail {
+  /* background-color: #333; */
+  background-image: url("./assets/snake.png");
+}
+
+/* .tile.snake {
+  background: hsl(0, 100%, 50%);
+  animation: redred 1500ms 0ms infinite ease-in;
+}
+
+@keyframes redred {
+  0% {
+    filter: hue-rotate(0deg);
+  }
+  100% {
+    filter: hue-rotate(360deg);
+  }
+} */
+
 .tile.food {
-  background-color: #ff0000;
+  /* background-color: #ff0000; */
+  background-image: url("./assets/apple.png");
+}
+
+.right-panel {
+  float: left;
 }
